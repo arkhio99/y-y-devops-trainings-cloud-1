@@ -14,12 +14,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: Set up Go
-      uses: actions/setup-go@v4
-      with:
-        go-version: '1.20'
-    - name: Build Go app
-      run: go mod download; CGO_ENABLED=0 go build
     - name: Build the Docker image
       run: docker build . --file catgpt/Dockerfile --tag cr.yandex/crp0d3c5ms3p8cnc5luk/catgpt:1.0.0
     - name: Push the Docker image
