@@ -1,0 +1,22 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Build Go app
+      run: go mod download; CGO_ENABLED=0 go build
+    - name: Build the Docker image
+      run: docker build . --file catgpt/Dockerfile --tag cr.yandex/crp0d3c5ms3p8cnc5luk/catgpt:1.0.0
+    - name: Push the Docker image
+      run: docker push cr.yandex/crp0d3c5ms3p8cnc5luk/catgpt:1.0.0
