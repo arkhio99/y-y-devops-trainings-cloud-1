@@ -16,5 +16,7 @@ jobs:
     - uses: actions/checkout@v3
     - name: Build the Docker image
       run: docker build ./catgpt --file ./catgpt/Dockerfile --tag cr.yandex/crp0d3c5ms3p8cnc5luk/catgpt:1.0.0
+    - name: Docker login
+      run: docker login cr.yandex --username ${{ sercrets.YC_DOCKER_CRED_USERNAME }} --password ${{ secrets.YC_DOCKER_CRED_PASSWORD }}
     - name: Push the Docker image
       run: docker push cr.yandex/crp0d3c5ms3p8cnc5luk/catgpt:1.0.0
