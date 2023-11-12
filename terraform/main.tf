@@ -26,7 +26,7 @@ resource "yandex_container_registry" "registry1" {
 }
 
 locals {
-  folder_id = "<INSERT YOUR FOLDER ID>"
+  folder_id = "b1gin99oi7mjdh1qp3ee"
   service-accounts = toset([
     "catgpt-sa",
   ])
@@ -73,7 +73,7 @@ resource "yandex_compute_instance" "catgpt-1" {
     }
     metadata = {
       docker-compose = file("${path.module}/docker-compose.yaml")
-      ssh-keys  = "ubuntu:${file("~/.ssh/devops_training.pub")}"
+      ssh-keys  = "ubuntu:${file("${path.module}/cloud-cred.yaml")}"
     }
 }
 
