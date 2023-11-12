@@ -19,7 +19,7 @@ jobs:
     - name: Docker login
       shell: bash
       env:
-        USERNAME: ${{ sercrets.YC_DOCKER_CRED_USERNAME }}
+        USERNAME: ${{ secrets.YC_DOCKER_CRED_USERNAME }}
         PASSWORD: ${{ secrets.YC_DOCKER_CRED_PASSWORD }}
       run: docker login cr.yandex --username $USERNAME --password $PASSWORD
     - name: Push the Docker image
